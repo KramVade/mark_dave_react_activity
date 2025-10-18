@@ -1,12 +1,7 @@
+import { Link } from 'react-router-dom'
 import Button from './Button'
 
-export default function CarCard({ name, price, image, stock }) {
-  const handleOrderClick = () => {
-    // static redirect to the order form for now
-    // assumption: order form route is '/order'
-    window.location.href = '/order'
-  }
-
+export default function CarCard({ id, name, price, image, stock }) {
   return (
     <article className="card car-card">
       <div className="card-media">
@@ -17,9 +12,9 @@ export default function CarCard({ name, price, image, stock }) {
         <p className="card-sub">{price}</p>
         <p className="card-stock">Stock: {stock}</p>
         <div className="card-actions">
-          <Button onClick={handleOrderClick} className="primary" aria-label={`Order ${name}`}>
+          <Link to={`/order/${id}`} className="btn primary" aria-label={`Order ${name}`}>
             Order Now
-          </Button>
+          </Link>
         </div>
       </div>
     </article>

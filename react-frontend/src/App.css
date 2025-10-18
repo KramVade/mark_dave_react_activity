@@ -235,3 +235,58 @@
   .hero { height: 80vh; min-height: 360px; }
   .hero-title { font-size: 1.6rem; letter-spacing: 0.08em }
 }
+
+/* Order Page Styles */
+.order-page .page-title {
+  text-align: center;
+}
+.order-details {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 3rem;
+  color: white;
+  align-items: flex-start;
+}
+.order-car-preview {
+  background: rgba(87, 55, 46, 0.85);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  text-align: center;
+}
+.order-car-preview img {
+  width: 100%;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+.order-car-preview h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+.order-car-preview .price {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #d1c5c1;
+}
+.order-form h3 {
+  margin-top: 0;
+}
+.form-group {
+  margin-bottom: 1.5rem;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #4a3229;
+  background-color: #3a251d;
+  color: white;
+  font-size: 1rem;
+}
+.form-actions {
+  margin-top: 2rem;
+}
