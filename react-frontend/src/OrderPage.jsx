@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import Button from '../components/Button'
+import Button from './components/Button'
 
 export default function OrderPage({ cars }) {
   const { carId } = useParams()

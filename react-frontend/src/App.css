@@ -237,6 +237,9 @@
 }
 
 /* Order Page Styles */
+.order-page {
+  padding-top: 8rem; /* Push content down below the absolute navbar */
+}
 .order-page .page-title {
   text-align: center;
 }

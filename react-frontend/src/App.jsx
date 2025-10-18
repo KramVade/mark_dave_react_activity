@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import HomePage from './pages/HomePage'
-import OrderPage from './pages/OrderPage'
+import Hero from './components/Hero'
+import CarCard from './components/CarCard'
+import OrderPage from './OrderPage'
 import './App.css'
 import BugattiImg from './images/Bugatti Veyron 16.4 Grand Sport Vitesse.jpeg'
 import AventadorImg from './images/Aventador LP 700-4 Roadster.png'
@@ -37,7 +38,22 @@ export default function App() {
       <div className="app-container">
         <Navbar />
         <Routes>
-          <Route path="/" element={<HomePage cars={cars} />} />
+          <Route
+            path="/"
+            element={
+              <>
+                <Hero />
+                <main className="main">
+                  <h1 className="page-title">Shop Now</h1>
+                  <div className="cars-grid">
+                    {cars.map((car) => (
+                      <CarCard key={car.id} {...car} />
+                    ))}
+                  </div>
+                </main>
+              </>
+            }
+          />
           <Route path="/order/:carId" element={<OrderPage cars={cars} />} />
         </Routes>
       </div>
