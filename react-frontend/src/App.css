@@ -49,12 +49,13 @@
 }
 
 .nav {
-  background: transparent;
-  position: absolute;
+  background: #2f1b14; /* Added background for when it's sticky */
+  position: sticky; /* Changed from absolute to sticky */
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 50; /* sit above the hero */
+  z-index: 100; /* Increased z-index to stay on top of all content */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3); /* Optional: adds a subtle shadow */
 }
 .nav-inner {
   max-width: 1200px;
@@ -85,6 +86,11 @@
 }
 .nav-links a:hover { opacity: 1; }
 
+/* Hide icons by default on desktop */
+.nav-links a svg {
+  display: none;
+}
+
 .main {
   max-width: 1200px;
   margin: 2.25rem auto;
@@ -106,6 +112,7 @@
   background-position: center center;
   position: relative;
   display: flex;
+  margin-top: -80px; /* Pull hero up to fill space left by sticky nav */
   align-items: center;
   justify-content: center;
 }
@@ -230,10 +237,41 @@
 .legacy-sub { color:#6b7280 }
 
 @media (max-width: 640px) {
-  .nav-inner { padding: 0.75rem 1rem }
   .page-title { font-size: 1.5rem }
   .hero { height: 80vh; min-height: 360px; }
   .hero-title { font-size: 1.6rem; letter-spacing: 0.08em }
+
+  /* --- Mobile Navbar Styles --- */
+  .nav {
+    top: auto; /* Unset sticky top position */
+    bottom: 0; /* Stick to the bottom */
+    position: fixed; /* Use fixed for consistent placement */
+    border-top: 1px solid #4a3229; /* Add a top border for separation */
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.4); /* Shadow on top */
+  }
+  .nav-inner {
+    padding: 0.5rem 0;
+    justify-content: space-around; /* Evenly space the icons */
+  }
+  .brand-link {
+    display: none; /* Hide brand on mobile */
+  }
+  .nav-links {
+    width: 100%;
+    justify-content: space-around;
+  }
+  .nav-links .nav-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem;
+    font-size: 0.65rem;
+  }
+  /* Show icons on mobile */
+  .nav-links a svg {
+    display: block;
+    width: 24px; height: 24px;
+  }
 }
 
 /* Order Page Styles */
@@ -293,3 +331,134 @@
 .form-actions {
   margin-top: 2rem;
 }
+
+/* About Page Styles */
+.about-page {
+  padding-top: 2rem; /* Add some space from the navbar */
+  color: #e2d9d5; /* Light text color for readability */
+}
+
+.about-content p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+/* Modal Styles */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background: #2f1b14;
+  padding: 1.5rem 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 500px;
+  color: #e2d9d5;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #4a3229;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  color: #e2d9d5;
+  cursor: pointer;
+  opacity: 0.7;
+}
+.modal-close-btn:hover {
+  opacity: 1;
+}
+
+.modal-body {
+  padding-top: 0.5rem;
+}
+
+.modal-body .form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #4a3229;
+  background-color: #3a251d;
+  color: white;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+}
+
+/* Side Panel Styles */
+.side-panel-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1040; /* Below modal, but above other content */
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.side-panel-backdrop.open {
+  opacity: 1;
+}
+
+.side-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  max-width: 80%;
+  height: 100%;
+  background: #2f1b14;
+  color: #e2d9d5;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+  z-index: 1041;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.side-panel.open {
+  transform: translateX(0);
+}
+
+.side-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #4a3229;
+}
+
+.side-panel-header h2 { margin: 0; font-size: 1.25rem; }
+.side-panel-close-btn { background: none; border: none; font-size: 2rem; line-height: 1; color: #e2d9d5; cursor: pointer; opacity: 0.7; }
+.side-panel-close-btn:hover { opacity: 1; }
+.side-panel-body { padding: 1.5rem; }

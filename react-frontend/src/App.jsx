@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import CarCard from './components/CarCard'
 import OrderPage from './OrderPage'
+import AboutPage from './components/AboutPage'
 import './App.css'
 import BugattiImg from './images/Bugatti Veyron 16.4 Grand Sport Vitesse.jpeg'
 import AventadorImg from './images/Aventador LP 700-4 Roadster.png'
@@ -43,7 +44,7 @@ export default function App() {
             element={
               <>
                 <Hero />
-                <main className="main">
+                <main className="main" id="inventory">
                   <h1 className="page-title">Shop Now</h1>
                   <div className="cars-grid">
                     {cars.map((car) => (
@@ -54,6 +55,7 @@ export default function App() {
               </>
             }
           />
+          <Route path="/about" element={<AboutPage />} />
           <Route path="/order/:carId" element={<OrderPage cars={cars} />} />
         </Routes>
       </div>
